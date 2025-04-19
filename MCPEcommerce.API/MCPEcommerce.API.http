@@ -1,0 +1,6 @@
+@MCPEcommerce.API_HostAddress = http://localhost:5277
+
+GET {{MCPEcommerce.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
