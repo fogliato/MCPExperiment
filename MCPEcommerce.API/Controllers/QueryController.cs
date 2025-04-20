@@ -24,21 +24,21 @@ namespace MCPEcommerce.API.Controllers
             {
                 if (string.IsNullOrEmpty(query.Question))
                 {
-                    return BadRequest(new { error = "A pergunta não pode ser vazia" });
+                    return BadRequest(new { error = "The question cannot be empty" });
                 }
 
-                // Gera a consulta SQL a partir da pergunta em linguagem natural
+                // Generate SQL query from natural language question
                 var sqlQuery = await _aiService.GenerateSQLQueryAsync(query.Question);
 
-                // Executa a consulta SQL
+                // Execute SQL query
                 var result = await _databaseService.ExecuteQueryAsync(sqlQuery);
 
-                // Formata o resultado de forma amigável
+                // Format result in a user-friendly way
                 var formattedResult = _databaseService.FormatQueryResult(result);
 
-                // Processa o resultado com IA para gerar uma resposta em linguagem natural
+                // Process the result with AI to generate a natural language response
                 var answer = await _aiService.ProcessQueryAsync(
-                    $"Com base nos seguintes dados: {formattedResult}, responda à pergunta: {query.Question}"
+                    $"Based on the following data: {formattedResult}, answer the question: {query.Question}"
                 );
 
                 query.Answer = answer;

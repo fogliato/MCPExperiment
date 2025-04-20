@@ -32,7 +32,7 @@ namespace MCPEcommerce.Infrastructure.Services
                         {
                             new
                             {
-                                text = $"Processe a seguinte pergunta e gere uma resposta clara e concisa: {question}"
+                                text = $"Process the following question and generate a clear and concise response: {question}"
                             }
                         }
                     }
@@ -56,27 +56,27 @@ namespace MCPEcommerce.Infrastructure.Services
                         {
                             new
                             {
-                                text = $@"Com base na seguinte estrutura do banco de dados:
+                                text = $@"Based on the following database structure:
 
 {schemaDescription}
 
-Gere uma consulta SQL válida para MySQL que responda à seguinte pergunta: {naturalLanguageQuery}
+Generate a valid SQL query for MySQL that answers the following question: {naturalLanguageQuery}
 
-A consulta deve:
-1. Usar os nomes exatos das tabelas e colunas conforme a estrutura
-2. Considerar apenas registros não deletados (Deletado = 0) em todas as tabelas
-3. Usar a sintaxe correta do MySQL
-4. Incluir todos os JOINs necessários para obter informações relacionadas
-5. Usar aliases apropriados para as tabelas
-6. Usar o formato de data correto do MySQL (YYYY-MM-DD)
-7. Retornar APENAS a consulta SQL, sem nenhum texto adicional, sem marcadores de código, sem explicações
-8. Não incluir aspas triplas ou marcadores de código como ```sql
+The query should:
+1. Use the exact table and column names as in the structure
+2. Consider only non-deleted records (Deleted = 0) in all tables
+3. Use correct MySQL syntax
+4. Include all necessary JOINs to get related information
+5. Use appropriate aliases for tables
+6. Use the correct MySQL date format (YYYY-MM-DD)
+7. Return ONLY the SQL query, with no additional text, no code markers, no explanations
+8. Do not include triple quotes or code markers like ```sql
 
-Exemplo de estrutura esperada:
-SELECT t1.campo1, t2.campo2
-FROM Tabela1 t1
-INNER JOIN Tabela2 t2 ON t1.id = t2.id_tabela1
-WHERE t1.Deletado = 0 AND t2.Deletado = 0"
+Example of expected structure:
+SELECT t1.field1, t2.field2
+FROM Table1 t1
+INNER JOIN Table2 t2 ON t1.id = t2.id_table1
+WHERE t1.Deleted = 0 AND t2.Deleted = 0"
                             }
                         }
                     }

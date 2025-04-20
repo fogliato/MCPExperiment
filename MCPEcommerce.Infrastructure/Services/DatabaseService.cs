@@ -34,27 +34,27 @@ namespace MCPEcommerce.Infrastructure.Services
             }
             catch (Exception ex)
             {
-                throw new Exception($"Erro ao executar a consulta: {ex.Message}", ex);
+                throw new Exception($"Error executing query: {ex.Message}", ex);
             }
         }
 
         public string FormatQueryResult(DataTable dataTable)
         {
             if (dataTable == null || dataTable.Rows.Count == 0)
-                return "Nenhum resultado encontrado.";
+                return "No results found.";
 
             var sb = new StringBuilder();
 
-            // Para consultas de contagem ou agregação simples
+            // For simple count or aggregation queries
             if (dataTable.Columns.Count == 1 && dataTable.Rows.Count == 1)
             {
                 var value = dataTable.Rows[0][0];
-                sb.AppendLine($"Resultado: {value}");
+                sb.AppendLine($"Result: {value}");
                 return sb.ToString();
             }
 
-            // Para consultas que retornam múltiplas colunas
-            sb.AppendLine("Resultados encontrados:");
+            // For queries that return multiple columns
+            sb.AppendLine("Results found:");
             foreach (DataRow row in dataTable.Rows)
             {
                 var rowValues = new List<string>();
